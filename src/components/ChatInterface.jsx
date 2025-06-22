@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button";
 import DetailsPop from "./DetailsPop";
 import axios, { Axios } from "axios";
 import useUserSession from "@/cusomHooks/useUserSession";
+import { useSearchParams } from 'next/navigation';
+
+
+
 
 import io from "socket.io-client";
 const socket = io("http://localhost:5000");
@@ -21,6 +25,11 @@ const ChatInterface = ({
   setCurrentCandidatesList,
   setShowModal,
 }) => {
+
+//   const searchParams = useSearchParams();
+// const candidateEmail = searchParams.get('candidateEmail');
+// const candidateId = searchParams.get('candidateId');
+
   const { user, loading, error } = useUserSession();
 
   const [newMessage, setNewMessage] = useState("");

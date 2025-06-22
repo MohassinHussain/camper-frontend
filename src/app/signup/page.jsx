@@ -11,7 +11,7 @@ const page = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/logged-in", { withCredentials: true })
+      .get("https://onrender.com/logged-in", { withCredentials: true })
       .then((res) => {
         // console.log("Session exists:", res.data);
         router.replace('/dashboard')
