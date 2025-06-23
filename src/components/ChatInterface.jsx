@@ -37,6 +37,11 @@ const ChatInterface = ({
   const [showMentionList, setShowMentionList] = useState(false);
   const inputRef = useRef(null);
 
+  const messagesEndRef = useRef(null);
+
+  
+
+
   const [messages, setMessages] = useState([]);
   useEffect(() => {
     if (selectedCandidate?._id) {
@@ -56,6 +61,12 @@ const ChatInterface = ({
       socket.off("receiveMessage", handleMessage);
     };
   }, [selectedCandidate?._id]);
+
+
+  useEffect(() => {
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+}, [messages]);
+
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -77,7 +88,7 @@ const ChatInterface = ({
     if (!newMessage.trim()) return;
 
     const receivers = managersAllowed
-      .filter((manager) => manager.email !== user.email)
+      .filter((manager) => manager.email !== user?.email)
       .map((manager) => ({
         name: manager.name,
         email: manager.email,
@@ -197,7 +208,10 @@ const ChatInterface = ({
             {messages?.length === 0 ? (
               <div className="text-slate-400">No messages yet.</div>
             ) : (
-              messages.map((msg, idx) => {
+              <>
+                {
+
+messages.map((msg, idx) => {
                 // const isSender = msg.senderSocketId === socket.id;
                 const isSender = msg.senderEmail === user?.email;
                 return (
@@ -208,6 +222,7 @@ const ChatInterface = ({
                     }`}
                   >
                     <div
+                    
                       className={`max-w-xs px-4 py-2 rounded-lg shadow-md ${
                         isSender
                           ? "bg-violet-700 text-white rounded-br-none"
@@ -229,9 +244,17 @@ const ChatInterface = ({
                         }}
                       />
                     </div>
+                   
+
                   </div>
-                );
+                  
+              );
+
               })
+
+                }
+                <div ref={messagesEndRef} />
+              </>
             )}
           </div>
 
@@ -240,7 +263,7 @@ const ChatInterface = ({
             <div className="absolute bottom-24 left-6 z-10 w-72 max-h-52 overflow-y-auto bg-purple-800 border border-slate-600 rounded-md shadow-md animate-slide-in-up">
               {managersAllowed.map(
                 (manager) =>
-                  manager.email !== user.email && (
+                  manager.email !== user?.email && (
                     <div
                       key={manager.id}
                       onClick={() => handleMentionClick(manager)}

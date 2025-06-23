@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function useUserSession() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // optional
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const router = useRouter();
 

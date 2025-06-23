@@ -77,26 +77,11 @@ const page = () => {
     
     
 
-    // if (!validatePasswords()) {
-    //   alert('Passwords do not match or are too short (minimum 6 characters)')
-    //   return
-    // }
-
-    // code here
-
-    // if (!agreedToTerms) {
-    //   alert('Please agree to the Terms of Service and Privacy Policy')
-    //   return
-    // }
-
     
 
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    // Navigate to dashboard or login (you can replace this with your actual auth logic)
 
-    // if(localStorage.getItem('user-session')) window.location.href = "/dashboard";
   };
 
   return (
@@ -258,71 +243,7 @@ const page = () => {
             <p className="text-xs text-gray-400 mt-1">At least 6 characters</p>
           </div>
 
-          {/* Confirm Password Field */}
-          {/* <div className="group">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300 mb-2">
-              Confirm Password
-            </label>
-            <div className="relative">
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 group-hover:border-white/20 ${
-                  formData.confirmPassword && formData.password !== formData.confirmPassword
-                    ? 'border-red-500 focus:ring-red-500'
-                    : 'border-white/10 focus:ring-blue-500'
-                }`}
-                placeholder="Confirm your password"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white transition-colors"
-              >
-                {showConfirmPassword ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                )}
-              </button>
-            </div>
-            {formData.confirmPassword && formData.password !== formData.confirmPassword && (
-              <p className="text-xs text-red-400 mt-1">Passwords do not match</p>
-            )}
-          </div> */}
-
-          {/* Terms Agreement */}
-          {/* <div className="flex items-start">
-            <input
-              type="checkbox"
-              id="terms"
-              checked={agreedToTerms}
-              onChange={(e) => setAgreedToTerms(e.target.checked)}
-              className="w-4 h-4 mt-0.5 text-blue-500 bg-white/5 border-white/10 rounded focus:ring-blue-500 focus:ring-2"
-              required
-            />
-            <label htmlFor="terms" className="ml-3 text-sm text-gray-300">
-              I agree to the{' '}
-              <Link href="/terms" className="text-blue-400 hover:text-blue-300 transition-colors">
-                Terms of Service
-              </Link>
-              {' '}and{' '}
-              <Link href="/privacy" className="text-blue-400 hover:text-blue-300 transition-colors">
-                Privacy Policy
-              </Link>
-            </label>
-          </div> */}
-
-          {/* Submit Button */}
+       
           <button
             type="submit"
             disabled={isLoading}
@@ -358,36 +279,7 @@ const page = () => {
           </button>
         </form>
 
-        {/* Divider */}
-        {/* <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-white/10"></div>
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-transparent text-gray-400">Or sign up with</span>
-          </div>
-        </div> */}
-
-        {/* Social Signup Buttons */}
-        {/* <div className="grid grid-cols-2 gap-4">
-          <button className="flex items-center justify-center px-4 py-2 border border-white/10 rounded-lg text-white hover:bg-white/5 transition-colors">
-            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-              <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-            </svg>
-            Google
-          </button>
-          <button className="flex items-center justify-center px-4 py-2 border border-white/10 rounded-lg text-white hover:bg-white/5 transition-colors">
-            <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-            Facebook
-          </button>
-        </div> */}
-
-        {/* Login Link */}
+       
         <div className="text-center mt-6">
           <p className="text-gray-400">
             Already have an account?{" "}

@@ -2,13 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import GlobalNotifications from "@/components/GlobalNotifications";
-import CandidatesSection from "@/components/CandidatesSection";
 import Candidates from "@/app/candidates/page";
 
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-import { Button } from "@/components/ui/button";
 
 import Footer from "@/components/Footer";
 import useUserSession from "@/cusomHooks/useUserSession";
@@ -22,31 +20,7 @@ const page = () => {
     else router.replace("/login");
   }, [router, user]);
 
-  // const [sess, setSess] = useState(true);
-  // const [userName, setUserName] = useState("")
-  // useEffect(() => {
-  //   const session = localStorage.getItem("user-session");
-
-  //   if (!session) {
-  //     router.replace("/login");
-  //     setSess(false);
-  //   }
-  // }, [router]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/logged-in", { withCredentials: true })
-  //     .then((res) => {
-  //       console.log("Session exists:", res.data);
-  //       setUserName(res.data.user.name)
-  //     })
-  //     .catch((err) => {
-  //       setSess(false);
-  //       router.replace("/login");
-  //       console.log("No session", err);
-  //     });
-  // }, []);
-
+  
   const handleLogout = async () => {
     await axios
       .post(
@@ -93,26 +67,10 @@ const page = () => {
       <button onClick={handleLogout} className="m-10 bg-red-400 rounded-sm p-1">
         Log Out
       </button>
-      {/* <button
-            onClick={() => {
-              localStorage.removeItem("user-session");
-              if (!localStorage.getItem("user-session"))
-                window.location.href = "/login";
-              else window.location.href = "/dashboard";
-
-              
-
-            }}
-            className="m-10 bg-red-400 rounded-sm p-1"
-          >
-            Log Out
-          </button> */}
+    
       <Footer />
     </div>
-    // ) : (
-    //   <h1>Rediercting</h1>
-    // )}
-    // </>
+   
   );
 };
 

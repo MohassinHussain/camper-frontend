@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useUserSession from "@/cusomHooks/useUserSession";
-import { RotateCcw } from "lucide-react"; // icon library (optional)
+import { RotateCcw } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 
 const GlobalNotifications = () => {
@@ -17,7 +17,11 @@ const GlobalNotifications = () => {
       const res = await axios.get(
         `http://localhost:5000/notifications/${user.email}`
       );
-      setNotifications(res.data.data || []);
+      // setNotifications(res.data.data || []);
+      const filtered = (res.data.data || []).filter((note) =>
+        note.receivers?.some((r) => r.email?.trim() === user.email?.trim())
+      );
+      setNotifications(filtered);
     } catch (err) {
       console.error("Failed to fetch notifications", err);
     } finally {
@@ -32,15 +36,22 @@ const GlobalNotifications = () => {
   return (
     <>
       <div className="flex justify-center items-center gap-4 mb-6">
-        <h1 className="text-4xl text-white text-center">Notifications / Mentions</h1>
+       <div className="flex flex-col">
+         <h1 className="text-4xl text-white text-center">
+          Notifications / Mentions
+        </h1>
+        <h2 className="text-center text-gray-400 mt-3 text-xl"> From where ever you are in</h2>
+       </div>
         <Button
           variant="outline"
           size="icon"
           onClick={fetchNotifications}
-          className="border-slate-600 hover:bg-slate-700 bg-black"
+          className="border-slate-600 hover:bg-slate-700 bg-black mb-6"
         >
           <RotateCcw
-            className={`h-5 w-5 ${loading ? "animate-spin text-blue-400" : "text-white"}`}
+            className={`h-5 w-5 ${
+              loading ? "animate-spin text-blue-400" : "text-white"
+            }`}
           />
         </Button>
       </div>

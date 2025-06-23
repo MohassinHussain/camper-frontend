@@ -8,22 +8,7 @@ import axios from "axios";
 
 export default function Home() {
   const router = useRouter();
-  // const [user, setUser] = useState(false)
-  // async function getUser() {
-  //   // if(localStorage.getItem('user-session')) return true;
-  //   // else return false;
-
-
-  //   // return false
-  // }
-
-  // useEffect(() => {
-
-  //   if (getUser()) router.replace("/dashboard") 
-  //   else router.replace("/login");
-
-  // }, [getUser, router]);
-
+  
   
   useEffect(() => {
     axios

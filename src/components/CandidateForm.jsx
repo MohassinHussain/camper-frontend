@@ -38,6 +38,7 @@ const CandidateForm = ({
     { id: "manager1", name: "manager1", email: "manager1@gmail.com" },
     { id: "manager2", name: "manager2", email: "manager2@gmail.com" },
     { id: "manager3", name: "manager3", email: "manager3@gmail.com" },
+    { id: "techrecruiter", name: "techrecruiter", email: "techrecruiter@gmail.com" },
   ];
 
 
@@ -126,7 +127,7 @@ const CandidateForm = ({
     };
 
     // added by whom
-    candidateDetails.addedBy = user.email;
+    candidateDetails.addedBy = user?.email;
     onAddCandidate(candidateDetails);
 
     try {
